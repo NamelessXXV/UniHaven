@@ -1,0 +1,15 @@
+[project]
+name = "UniHaven"
+version = "0.1.0"
+description = "Default template for PDM package"
+authors = [
+    {name = "COMP3297_Group_D", email = "125745725+alfred1029@users.noreply.github.com"},
+]
+dependencies = ["Django==5.0.13"]
+requires-python = ">=3.12"
+readme = "README.md"
+license = {text = "MIT"}
+
+
+[tool.pdm]
+distribution = false

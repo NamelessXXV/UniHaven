@@ -8,8 +8,8 @@ __pycache__/
 # Virtual Environment
 .env
 .venv
-.env/
-.venv/
+env/
+venv/
 
 # PDM
 .pdm-python/

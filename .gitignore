@@ -12,7 +12,7 @@ env/
 venv/
 
 # PDM
-.pdm-python/
+.pdm-python
 pdm.lock
 
 # Django
@@ -30,4 +30,6 @@ media/
 dist/
 build/
 *.egg-info/
+
+.DS_Store
 

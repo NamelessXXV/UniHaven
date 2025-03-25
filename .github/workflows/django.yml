@@ -1,0 +1,38 @@
+name: Django CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12'
+    - name: Install PDM
+      run: |
+        python -m pip install --upgrade pip
+        pip install pdm
+    - name: Install Project Dependencies
+      run: |
+        pdm install
+    - name: Run Tests
+      run: |
+        # Apply migrations first (needed for most Django projects)
+        pdm run python manage.py migrate
+        
+        # Start the server in the background
+        pdm run python manage.py runserver 0.0.0.0:8000 &
+        
+        # Give the server a moment to start
+        sleep 5
+        
+        # Run the custom test script
+        pdm run python testapi.py
